@@ -1,0 +1,11 @@
+@import "./../services/consatants.scss";
+@import "./../services/placeholders.scss";
+
+.information {
+  @extend %content;
+
+  &__header {
+    margin: 1em 0;
+    text-align: center;
+  }
+}

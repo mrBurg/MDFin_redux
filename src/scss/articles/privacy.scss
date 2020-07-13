@@ -1,0 +1,37 @@
+@import "./../services/consatants.scss";
+
+.privacy {
+  margin-top: 2em;
+
+  &__header {
+    &__info {
+      color: $gray;
+      font-weight: bold;
+      margin: 0 0 1em;
+    }
+
+    &__descriptions {
+      color: $gray;
+      text-align: justify;
+    }
+    
+    &__text {
+      margin: .5em 0;
+    }
+  }
+
+  .section {
+    &__title {
+      margin: 1em 0 .5em;
+    }
+  }
+
+  .paragraphs {
+    &__list {
+      color: $gray;
+      list-style: outside;
+      padding-left: 1em;
+      text-align: justify;
+    }
+  }
+}

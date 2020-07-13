@@ -1,0 +1,6 @@
+@import "./../services/consatants.scss";
+@import "./../services/placeholders.scss";
+
+.loan-repayment {
+  @extend %content;
+}

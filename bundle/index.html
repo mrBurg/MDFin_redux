@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html class="html">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Fedor Burhonov">
+    <meta name="description" content="MDFin Redux Application">
+    <meta name="keywords" content="MDFin">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>MDFin Redux</title>
+    <script>
+      document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+      ':35729/livereload.js?snipver=1"></' + 'script>')
+    </script> 
+    <base href="/">  <link href="/./css/index.css" rel="stylesheet"></head>
+  <body class="body">
+    <div id="app"></div>    <script src="http://192.168.1.99:8080/resources/js/external_tracking.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+          window.dispatchEvent(new Event('getPartnerIframe'));
+          console.info('getPartnerIframe');
+        }, 3000);        
+      })
+    </script>
+  <script src="/js/manifest.js"></script><script src="/js/chunks/vendor.js"></script><script src="/js/chunks/index.js"></script></body>
+</html>

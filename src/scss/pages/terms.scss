@@ -1,0 +1,39 @@
+@import "./../services/consatants.scss";
+@import "./../services/placeholders.scss";
+
+.terms {
+  @extend %content;
+
+  &__header {
+    margin: 1em 0;
+    text-align: center;
+
+    &__term {
+      color: $gray;
+    }
+
+    &__text {
+      font-weight: bold;
+    }
+  }
+
+  .section {
+    &__title {
+      margin: .5em 0;
+      text-transform: uppercase;
+    }
+  }
+
+  .paragraphs {
+    &__title {
+      margin: .5em 0;
+    }
+
+    &__list {
+      color: $gray;
+      list-style: outside;
+      padding-left: 1em;
+      text-align: justify;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "db": {
+    "host": "localhost",
+    "name": "fed",
+    "password": "0000",
+    "database": "mdfin"
+  },
+  "server": {
+    "host": "localhost",
+    "port": 8888
+  }
+}

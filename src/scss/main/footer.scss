@@ -1,0 +1,14 @@
+@import "./../services/consatants.scss";
+@import "./../services/placeholders.scss";
+
+.footer {
+  @extend %display-flex;
+  align-items: center;
+  background-color: $orange;
+  justify-content: center;
+  height: 45px;
+  
+  &__item {
+    margin: 0 .2em;
+  }
+}

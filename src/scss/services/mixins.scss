@@ -1,0 +1,159 @@
+@mixin prefixes($data) {
+  @each $name,
+  $val in $data {
+    @each $prefix in $prefixes {
+      #{$prefix}#{$name}: $val;
+    }
+    #{$name}: $val;
+  }
+}
+
+@mixin media-query($data) {
+  @each $width,
+  $rule in $data {
+    @media (min-width: $width) {
+      @each $name, $val in $rule {
+        #{$name}: $val;
+      }
+    }
+  }
+}
+
+@mixin transition($params: $defaultTransitionParams, $delay: $defaultDelay) {
+  $data: (transition: ($params $delay));
+  @include prefixes($data);
+}
+
+@mixin opacity($opacity: $defaultOpacity) {
+  $opacity-ie: $opacity * 100;
+
+  opacity: $opacity;
+  filter: alpha(opacity=$opacity-ie);
+}
+
+@mixin box-shadow($boxShadow: $defaultShadow) {
+  $data: (box-shadow: $boxShadow);
+  @include prefixes($data);
+}
+
+@mixin box-sizing($boxSizing: $defaultSizing) {
+  $data: (box-sizing: $boxSizing);
+  @include prefixes($data);
+}
+
+@mixin border-radius($borderRadius: $defaultBorderRadius) {
+  $data: (border-radius: $borderRadius);
+  @include prefixes($data);
+}
+
+@mixin wrapper($data) {
+  @at-root {
+    @each $parent in $data {
+      #{$parent} & {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin gradient($a: 0deg, $params:(0%: $gray-light, 100%: $white)) {
+  // @function color() {
+  //   @each $val,
+  //   $color in $params {
+  //     @return $color;
+  //   }
+  // }
+  
+  // @function webkit() {
+  //   $res: "";
+  //   @each $val,
+  //   $color in $params {
+  //     $res: #{$res + if($res !="", ", ", "") + color-stop($val, $color)};
+  //   }
+  
+  //   @return -webkit-gradient(linear, $a, $res);
+  // }
+  
+  // @function default($prefix: null) {
+  //   $res: "";
+  //   @each $val,
+  //   $color in $params {
+  //     $res: #{$res + if($res !="", ", ", "") + $color + " " + $val};
+  //   }
+  
+  //   @return #{$prefix}linear-gradient($a, $res);
+  // }
+  
+  // @function filter() {
+  //   $startColor: "";
+  //   $endColorstr: "";
+  //   $res: "";
+  
+  //   @each $val,
+  //   $color in $params {
+  //     @if($startColor=="") {
+  //       $startColor: $color;
+  //     }
+  //     $res: $color;
+  //   }
+  
+  //   @return progid:DXImageTransform.Microsoft.gradient(startColorstr="#{$startColor}", endColorstr="#{$res}", GradientType="0");
+  // }
+  
+  // background: color();
+  // background: webkit();
+  // @each $prefix in $prefixes {
+  //   background: default($prefix);
+  // }
+  // background: default();
+  filter: filter();
+}
+
+@mixin state($delimiter:"", $state: ".ui-state") {
+  &#{$delimiter}#{$state} {
+    @content
+  }
+}
+
+@mixin flex-shrink($val) {
+  @each $prefix in $prefixes {
+    #{$prefix}flex-shrink: $val;
+  }
+  flex-shrink: $val;
+}
+
+@mixin placeholder {
+  $delimiter: ":";
+  @for $prefix from 1 through 2 {
+    &#{$delimiter}-moz-placeholder {
+      @content;
+    }
+
+    $delimiter: $delimiter + ":";
+  }
+
+  $delimiter: ":";
+  @for $prefix from 1 through 2 {
+    &#{$delimiter}-ms-input-placeholder {
+      @content;
+    }
+
+    $delimiter: $delimiter + ":";
+  };
+  
+
+  $delimiter: "::";
+  &#{$delimiter}-webkit-input-placeholder,
+  &#{$delimiter}placeholder {
+    @content;
+  }
+}
+
+@mixin user-select($val: auto){
+  @each $prefix in $prefixes {
+    @if $prefix != "-o-" {
+      #{$prefix}user-select: $val;
+    }
+  }
+  user-select: $val;
+}

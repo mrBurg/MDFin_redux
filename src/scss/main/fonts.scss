@@ -1,0 +1,49 @@
+@import "./../services/consatants.scss";
+
+$path: "/fonts/Calibri/";
+$names: (Calibri, Calibri-Bold, Calibri-Italic, Calibri-Bold_Italic);
+$types: (eot: embedded-opentype, otf: opentype, woff2: woff2, woff: woff, ttf: truetype, svg: svg);
+
+@function ie-font-url($name) {
+  @return url("#{$path + $name}.eot");
+}
+
+@function check-type($name,
+$ext) {
+  $type: "";
+  @if($ext=="eot") {
+    $type: $type+"?#iefix";
+  }
+  @if($ext=="svg") {
+    $type: $type+"#"+$name;
+  }
+  @return $type;
+}
+
+@function font-url($name) {
+  $count: 0;
+  $urls: "";
+  @each $ext,
+  $type in $types {
+    $str: if($count==0, "", ",");
+    $str: $str+url("#{$path + $name}.#{$ext}#{check-type($name, $ext)}");
+    $str: $str+if($type,
+    " "+format("#{$type}"),
+    "");
+
+    $urls: $urls+$str;
+    $count: $count+1;
+  }
+  @return #{$urls};
+}
+
+
+@each $name in $names {
+  @font-face {
+    font-family: "#{$name}";
+    font-weight: normal;
+    font-style: normal;
+    src: ie-font-url($name);
+    src: font-url($name);
+  }
+}

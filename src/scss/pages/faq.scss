@@ -1,0 +1,14 @@
+@import "./../services/consatants.scss";
+@import "./../services/placeholders.scss";
+
+.faq {
+  @extend %content;
+
+  .section {
+    margin-top: 1em;
+
+    &__title {
+      text-align: center;
+    }
+  }
+}

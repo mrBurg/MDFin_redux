@@ -1,0 +1,18 @@
+{
+  "name": "fbd",
+  "description": "fbd project",
+  "main": "webpack.config.js",
+  "authors": ["f.burgonov"],
+  "license": "ISC",
+  "private": true,
+  "ignore": ["**/.*", "node_modules", "bower_components", "test", "tests"],
+  "dependencies": {
+    "jquery": "^3.4.1",
+    "jquery-ui": "^1.12.1"
+  },
+  "overrides": {
+    "jquery": {
+      "main": "./dist/jquery.min.js"
+    }
+  }
+}

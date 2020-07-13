@@ -1,0 +1,150 @@
+@import "./../services/consatants.scss";
+@import "./../services/placeholders.scss";
+@import "./../services/mixins.scss";
+
+* {
+  margin: 0;
+  outline: none;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+html {
+  color: $gray-dark;
+  font: 18px/1.7em Calibri;
+}
+
+body,
+#app,
+.container {
+  @extend %display-flex;
+  flex-flow: column nowrap;
+  flex-grow: 1;
+}
+
+
+body {
+  // background: url("/images/theme/main_background.jpg") fixed !important;
+}
+
+@for $i from 1 through 6 {
+  $step: .1;
+
+  h#{$i} {
+    font-size: #{1.5 - ($i - 1) * $step}em;
+    font-weight: normal;
+  }
+}
+
+.content {
+  flex-grow: 1;
+}
+
+.accordion {
+  &__header,
+  &__content {
+    padding: .5em .5em * $fib;
+  }
+
+  &__header {
+    @extend %display-flex;
+    @include transition;
+    align-items: center;
+    background-color: $gray-misty;
+    border-radius: .2em;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $gray-light;
+    }
+
+    @include state {
+      $angle: 90deg;
+      $time: .1s;
+
+      &-default {
+        .icons {
+          .line {
+            transform-origin: 15px 15px;
+          }
+
+          .line:nth {
+            &-child(odd) {
+              transition: all $time;
+            }
+
+            &-child(even) {
+              transition: all $time * 2;
+            }
+          }
+        }
+      }
+
+      &-active {
+        .icons {
+          .line:nth {
+            &-child(odd),
+            &-child(even) {
+              transition-timing-function: linear;
+            }
+            &-child(odd) {
+              transition-delay: $time;
+              transform: rotate($angle);
+            }
+            &-child(even) {
+              transform: rotate($angle * 2);
+            }
+          }
+        }
+      }
+    }
+
+    &-icon {
+      display: none;
+    }
+  }
+
+  &__content {
+    padding: .5em 1em;
+    color: $gray;
+    list-style: none;
+    text-align: justify;
+
+    ul {
+      list-style: disc inside;
+    }
+  }
+
+  &__data {
+    margin: .1em 0;
+  }
+
+  &__text {
+    @include prefixes((user-select: none));
+    flex-grow: 1;
+  }
+}
+
+button {
+  @include border-radius;
+  @include box-shadow;
+  @include transition;
+  border: 1px solid $form-border;
+  background: $white;
+  color: $gray-dark;
+  cursor: pointer;
+  padding: .7em * $fib .7em;
+  &:hover {
+    background: $gray-dark;
+    color: $white;
+  }
+
+  &:active {
+    @include box-shadow(none);
+  }
+}

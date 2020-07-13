@@ -1,0 +1,4 @@
+@function column-width($num) {
+  $result: 100 / $num;
+  @return #{$result}#{%};
+}

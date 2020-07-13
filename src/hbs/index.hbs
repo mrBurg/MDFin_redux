@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html class="html">
+  <head>
+    {{> partials/head}}
+  </head>
+  <body class="body">
+    {{> partials/content}}
+    {{!-- <script src="https://nazivnost.cz/resources/js/external_tracking.js"></script> --}}
+    <script src="http://192.168.1.99:8080/resources/js/external_tracking.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+          window.dispatchEvent(new Event('getPartnerIframe'));
+          console.info('getPartnerIframe');
+        }, 3000);        
+      })
+    </script>
+  </body>
+</html>
